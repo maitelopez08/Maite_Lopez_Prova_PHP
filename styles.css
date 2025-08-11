@@ -64,7 +64,7 @@ header {
 .menu li a {
     display: block;
     padding: 15px;
-    color: white;
+    color: rgb(255, 255, 255);
     text-decoration: none;
     background-color: #333;
 }
