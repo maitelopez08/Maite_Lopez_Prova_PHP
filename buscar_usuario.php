@@ -47,7 +47,7 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <button type="submit">Pesquisar</button>
     </form>
         <?php if(!empty($usuarios)):?>
-            <table border=1>
+            <table class="table">
                 <tr>
                     <th>ID</th>
                     <th>Nome</th>
