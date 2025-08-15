@@ -57,7 +57,7 @@ if($_SERVER["REQUEST_METHOD"]== "POST"){
         <button type="submit">Buscar</button>
     </form>
 <?php if($usuario):?>
-    <form action="processa_alteracao_usuario.php" method="GET">
+    <form action="processa_alteracao_usuario.php" method="POST">
         <input type="hidden" name="id_usuario" value="<?=htmlspecialchars($usuario['id_usuario']);?>">
 
         <label for="nome">Nome:</label>

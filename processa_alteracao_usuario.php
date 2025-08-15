@@ -16,27 +16,22 @@ if($_SERVER["REQUEST_METHOD"] =="POST"){
 
     //ATUALIZA OS DADOS DO USUARIO
     if($nova_senha){
-        $sql = "UPDATE usuario SET nome = :nome, email = :email, id_perfil = :id_perfil, senha = :senha WHERE id_usuario = :id";
-        $stmt = $pdo->prepare($sql);
+        $sql="UPDATE usuario SET nome=:nome,email=:email,id_perfil=:id_perfil,senha=:senha WHERE id_usuario=:id";
+        $stmt=$pdo->prepare($sql);
         $stmt->bindParam(':senha',$nova_senha);
     } else{
-        $sql = "UPDATE usuario SET nome = :nome, email = :email, id_perfil = :id_perfil WHERE id_usuario = :id";
-        $stmt = $pdo ->prepare($sql);
-        
+        $sql="UPDATE usuario SET nome=:nome,email=:email,id_perfil=:id_perfil WHERE id_usuario=:id";
+        $stmt=$pdo->prepare($sql);
     }
-
         $stmt->bindParam(':nome',$nome);
         $stmt->bindParam(':email',$email);
         $stmt->bindParam(':id_perfil',$id_perfil);
-        $stmt->bindParam(':id_usuario',$id_usuario);
+        $stmt->bindParam(':id',$id_usuario);
 
         if($stmt->execute()){
             echo "<script>alert('Usuario atualizado com sucesso!');window.location.href='buscar_usuario.php';</script>";
         } else{
             echo "<script>alert('Erro ao atualizar usuario!');window.location.href='alterar_usuario.php?id=$id_usuario';</script>";
         }
-        
 }
-
-
 ?>
