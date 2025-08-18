@@ -38,6 +38,32 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
   <title>Cadastrar Usuário</title>
   <link rel="stylesheet" href="bootstrap-5.3.7-dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="styles.css">
+
+  <script>
+    function validarUsuario() {
+        let nome = document.getElementById("nome").value.trim();
+        let email = document.getElementById("email").value.trim();
+        let senha = document.getElementById("senha").value;
+
+        if (nome.length < 3) {
+            alert("O nome do funcionário deve ter pelo menos 3 caracteres.");
+            return false;
+        }
+
+        let regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!regexEmail.test(email)) {
+            alert("Digite um e-mail válido.");
+            return false;
+        }
+
+        if (senha.length < 6) {
+            alert("A senha deve ter pelo menos 6 caracteres.");
+            return false;
+        }
+
+        return true;
+    }
+  </script>
 </head>
 <body class="bg-light">
 <?php include 'menu.php'; ?>
@@ -51,7 +77,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
         </div>
         <div class="card-body">
 
-          <form action="cadastro_usuario.php" method="POST" onsubmit="returnvalidarUsuario()">
+          <form action="cadastro_usuario.php" method="POST" onsubmit="return validarUsuario()">
 
             <div class="form-floating mb-3">
               <input type="text" id="nome" name="nome" class="form-control" placeholder="Nome" required>

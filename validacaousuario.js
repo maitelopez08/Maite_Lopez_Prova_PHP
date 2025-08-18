@@ -1,6 +1,6 @@
 function validarUsuario() {
-    let nome = document.getElementById("nome").value;
-    let email = document.getElementById("email").value;
+    let nome = document.getElementById("nome").value.trim();
+    let email = document.getElementById("email").value.trim();
     let senha = document.getElementById("senha").value;
 
     if (nome.length < 3) {
@@ -14,11 +14,11 @@ function validarUsuario() {
         return false;
     }
 
-    return true;
-
-    if (nome.length < 8) {
-        alert("O nome do funcionário deve ter pelo menos 3 caracteres.");
-            return false;
+    let regexSenha = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!regexsenha.test(senha)) {
+        alert("Senha Inválida.");
+        return false;
     }
 
+    return true;
 }
