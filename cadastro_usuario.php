@@ -36,62 +36,58 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cadastrar Usuário</title>
-  <!-- Bootstrap local -->
   <link rel="stylesheet" href="bootstrap-5.3.7-dist/css/bootstrap.min.css">
 </head>
 <body class="bg-light">
 
-  <div class="container py-5">
-    <div class="row justify-content-center">
-      <div class="col-md-6">
+  <div class="d-flex align-items-center justify-content-center vh-100">
+    <div class="col-md-6">
 
-        <div class="card shadow-sm rounded-3">
-          <div class="card-body">
-            <h2 class="mb-4 text-center">Cadastrar Usuário</h2>
-
-            <form action="cadastro_usuario.php" method="POST">
-
-              <div class="mb-3">
-                <label for="nome" class="form-label">Nome</label>
-                <input type="text" id="nome" name="nome" class="form-control" required>
-              </div>
-
-              <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" id="email" name="email" class="form-control" required>
-              </div>
-
-              <div class="mb-3">
-                <label for="senha" class="form-label">Senha</label>
-                <input type="password" id="senha" name="senha" class="form-control" required>
-              </div>
-
-              <div class="mb-3">
-                <label for="id_perfil" class="form-label">Perfil</label>
-                <select id="id_perfil" name="id_perfil" class="form-select">
-                  <option value="1">Administrador</option>
-                  <option value="2">Secretaria</option>
-                  <option value="3">Almoxarife</option>
-                  <option value="4">Cliente</option>
-                </select>
-              </div>
-
-            <!-- Botones uno debajo del otro y de tamaño intermedio -->
-                <div class="d-grid gap-2">
-                <button type="submit" class="btn btn-outline-primary">Salvar</button>
-                <button type="reset" class="btn btn-outline-danger">Cancelar</button>
-                <a href="principal.php" class="btn btn-outline-dark">Voltar</a>
-                </div>
-
-
-          </div>
+      <div class="card shadow-sm rounded-3">
+        <div class="card-header bg-primary text-white text-center">
+          <h2 class="mb-0">Cadastrar Usuário</h2>
         </div>
+        <div class="card-body">
 
+          <form action="cadastro_usuario.php" method="POST">
+
+            <div class="form-floating mb-3">
+              <input type="text" id="nome" name="nome" class="form-control" placeholder="Nome" required>
+              <label for="nome">Nome</label>
+            </div>
+
+            <div class="form-floating mb-3">
+              <input type="email" id="email" name="email" class="form-control" placeholder="Email" required>
+              <label for="email">Email</label>
+            </div>
+
+            <div class="form-floating mb-3">
+              <input type="password" id="senha" name="senha" class="form-control" placeholder="Senha" required>
+              <label for="senha">Senha</label>
+            </div>
+
+            <div class="mb-3">
+              <label for="id_perfil" class="form-label">Perfil</label>
+              <select id="id_perfil" name="id_perfil" class="form-select">
+                <option value="1">Administrador</option>
+                <option value="2">Secretaria</option>
+                <option value="3">Almoxarife</option>
+                <option value="4">Cliente</option>
+              </select>
+            </div>
+
+            <div class="d-grid gap-2">
+              <button type="submit" class="btn btn-primary">Salvar</button>
+              <button type="reset" class="btn btn-secondary">Cancelar</button>
+              <a href="principal.php" class="btn btn-dark">Voltar</a>
+            </div>
+
+          </form>
+
+        </div>
       </div>
-    </div>
-  </div>
 
-  <!-- Bootstrap JS local -->
-  <script src="bootstrap-5.3.7-dist/js/bootstrap.bundle.min.js"></script>
+    </div>
+  </div>  
 </body>
 </html>

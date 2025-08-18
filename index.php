@@ -37,25 +37,34 @@ if($_SERVER['REQUEST_METHOD']== "POST"){
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login</title>
+<link rel="stylesheet" href="bootstrap-5.3.7-dist/css/bootstrap.min.css">
 </head>
-<body>
-    <h2>Login</h2>
+<body class="bg-light d-flex justify-content-center align-items-center vh-100">
+    
+<div class="card shadow-lg p-4 rounded-4" style="max-width: 400px; width: 100%;">
+    <h3 class="text-center mb-4 text-primary">Login</h3>
+
     <form action="index.php" method="POST">
-        <label for="email">E-mail</label>
-        <input type="email" id="email" name="email" required>
+        <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="email" name="email" placeholder="Digite seu e-mail" required>
+            <label for="email">E-mail</label>
+        </div>
 
-        <label for="senha">Senha</label>
-        <input type="password" id="senha" name="senha" required>
+        <div class="form-floating mb-3">
+            <input type="password" class="form-control" id="senha" name="senha" placeholder="Digite sua senha" required>
+            <label for="senha">Senha</label>
+        </div>
 
-        <button type="submit">Entrar</button>
+        <button type="submit" class="btn btn-primary w-100 py-2">Entrar</button>
     </form>
 
-    <p><a href="recuperar_senha.php">Esqueci a minha senha</a></p>
-
-    
+    <div class="text-center mt-3">
+        <a href="recuperar_senha.php" class="text-decoration-none">Esqueci a minha senha</a>
+    </div>
+</div>
 </body>
 </html>
+

@@ -34,46 +34,65 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buscar Usuário</title>
-    <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buscar Usuário</title>
+<link rel="stylesheet" href="bootstrap-5.3.7-dist/css/bootstrap.min.css">
 </head>
-<body>
-    <h2>Lista de Usuários</h2>    
-    <form action="buscar_usuario.php" method="POST">
-        <label for="busca">Digite o ID ou NOME(opcional):</label>
-        <input type="text" id="busca" name="busca">
-        <button type="submit">Pesquisar</button>
-    </form>
-        <?php if(!empty($usuarios)):?>
-            <table class="table">
-                <tr>
-                    <th>ID</th>
-                    <th>Nome</th>
-                    <th>Email</th>
-                    <th>Perfil</th>
-                    <th>Ações</th>
-                </tr>
-                <?php foreach($usuarios as $usuario): ?>
-      
-                <tr>
-                    <td><?=htmlspecialchars($usuario['id_usuario'])?></td>
-                    <td><?=htmlspecialchars($usuario['nome'])?></td>
-                    <td><?=htmlspecialchars($usuario['email'])?></td>
-                    <td><?=htmlspecialchars($usuario['id_perfil'])?></td>
-                    <td>
-                        <a href="alterar_usuario.php?id=<?=htmlspecialchars($usuario['id_usuario'])?>">Alterar</a>
-                        
-                        <a href="excluir_usuario.php?id=<?=htmlspecialchars($usuario['id_usuario'])?>"onclick="return confirm('Tem certeza que deseja excluir este usuario?')">Excluir</a>              
-                    </td>
-                </tr>
-                <?php endforeach;?>
-            </table>
-    <?php else:?>
-        <p>Nenhum usuario encontrado.</p>
-    <?php endif;?>
+<body class="bg-light">
+<div class="container mt-5">
+    <div class="card shadow p-4">
+        <h2 class="text-center mb-4">Lista de Usuários</h2>    
 
-    <a href="principal.php">VOLTAR</a>
+
+        <form action="buscar_usuario.php" method="POST" class="row g-3 mb-4">
+            <div class="col-md-8">
+                <input type="text" class="form-control" id="busca" name="busca" placeholder="Digite o ID ou Nome">
+            </div>
+            <div class="col-md-4">
+                <button type="submit" class="btn btn-primary w-100">Pesquisar</button>
+            </div>
+        </form>
+
+        <?php if(!empty($usuarios)):?>
+            <div class="table-responsive">
+                <table class="table table-striped table-hover align-middle text-center">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>Email</th>
+                            <th>Perfil</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach($usuarios as $usuario): ?>
+                            <tr>
+                                <td><?=htmlspecialchars($usuario['id_usuario'])?></td>
+                                <td><?=htmlspecialchars($usuario['nome'])?></td>
+                                <td><?=htmlspecialchars($usuario['email'])?></td>
+                                <td><?=htmlspecialchars($usuario['id_perfil'])?></td>
+                                <td>
+                                    <a href="alterar_usuario.php?id=<?=htmlspecialchars($usuario['id_usuario'])?>" 
+                                       class="btn btn-warning btn-sm">Alterar</a>
+                                    <a href="excluir_usuario.php?id=<?=htmlspecialchars($usuario['id_usuario'])?>" 
+                                       class="btn btn-danger btn-sm"
+                                       onclick="return confirm('Tem certeza que deseja excluir este usuário?')">Excluir</a>              
+                                </td>
+                            </tr>
+                        <?php endforeach;?>
+                    </tbody>
+                </table>
+            </div>
+        <?php else:?>
+            <div class="alert alert-warning text-center">Nenhum usuário encontrado.</div>
+        <?php endif;?>
+
+        <div class="text-center mt-3">
+            <a href="principal.php" class="btn btn-secondary">Voltar</a>
+        </div>
+    </div>
+</div>
 </body>
 </html>

@@ -40,37 +40,44 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alterar Senha</title>
-    <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alterar Senha</title>
+<link rel="stylesheet" href="bootstrap-5.3.7-dist/css/bootstrap.min.css">
 </head>
-<body>
-    <h2>Alterar Senha</h2>
-    <p>Ola, <strong><?php echo $_SESSION['usuario'];?></strong>.Digite sua nova senha Abaixo:</p>
+<body class="bg-light d-flex justify-content-center align-items-center vh-100">
+
+<div class="card shadow-lg p-4 rounded-4" style="max-width: 400px; width: 100%;">
+    <h3 class="text-center mb-4 text-primary">Alterar Senha</h3>
+
+    <p class="text-center mb-3">Olá, <strong><?php echo $_SESSION['usuario'];?></strong>. Digite sua nova senha abaixo:</p>
 
     <form action="alterar_senha.php" method="POST">
-        <label for="novo_senha">Nova senha</label>
-        <input type="password" id="nova_senha" name="nova_senha" required>
-        
-        <label for="confirmar_senha">Confirmar nova senha</label>
-        <input type="password" id="confirmar_senha" name="confirmar_senha" required>
+        <div class="form-floating mb-3">
+            <input type="password" class="form-control" id="nova_senha" name="nova_senha" placeholder="Nova senha" required>
+            <label for="nova_senha">Nova Senha</label>
+        </div>
 
-        <label>
-        <input type="checkbox" onclick="mostrarSenha()">Mostrar senha
-        </label>
+        <div class="form-floating mb-3">
+            <input type="password" class="form-control" id="confirmar_senha" name="confirmar_senha" placeholder="Confirmar nova senha" required>
+            <label for="confirmar_senha">Confirmar Nova Senha</label>
+        </div>
 
-        <button type="submit">Salvar nova Senha</button>
+        <div class="form-check mb-3">
+            <input class="form-check-input" type="checkbox" id="mostrarSenha" onclick="mostrarSenha()">
+            <label class="form-check-label" for="mostrarSenha">Mostrar senha</label>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100 py-2">Salvar Nova Senha</button>
     </form>
-
+</div>
 <script>
-    function mostrarSenha(){
-        var senha1 = document.getElementById("nova_senha");
-        var senha2 = document.getElementById("confirmar_senha");
-        var tipo = senha1.type ==="password" ? "text": "password";
-        senha1.type=tipo;
-        senha2.type=tipo;
-    }
-</script>
+function mostrarSenha(){
+    var senha1 = document.getElementById("nova_senha");
+    var senha2 = document.getElementById("confirmar_senha");
+    var tipo = senha1.type === "password" ? "text" : "password";
+    senha1.type = tipo;
+    senha2.type = tipo;
+}
 </body>
 </html>

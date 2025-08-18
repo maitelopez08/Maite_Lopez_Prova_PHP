@@ -53,40 +53,48 @@ $opcoes_menu = $permissoes["$id_perfil"];
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Painel Principal</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="scripts.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Painel Principal</title>
+<!-- Bootstrap local -->
+<link rel="stylesheet" href="bootstrap-5.3.7-dist/css/bootstrap.min.css">
 </head>
 <body>
-    <header>
-        <div class="saudacao">
-            <h2>Bem Vindo, <?php echo $_SESSION["usuario"]; ?>! Perfil: <?php echo $nome_perfil;?></h2>
-        </div>
 
-        <div class="logout">
-            <form action="logout.php" method="POST">
-                <button type="submit">Logout</button>
-            </form>
-        </div>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Painel</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-    </header>
-    <nav>
-        <ul class="menu">
-            <?php foreach($opcoes_menu as $categoria =>$arquivos):?>
-            <li class="dropdown">
-                <a href="#"><?=$categoria ?></a>
-                <ul class="dropdown-menu">
-                    <?php foreach($arquivos as $arquivo):?>
-                        <li>
-                        <a href="<?=$arquivo?>"><?=ucfirst(str_replace("_"," ",basename($arquivo, ".php")))?></a>
-                        </li>
-                    <?php endforeach;?>
-                </ul>
-            </li>
-            <?php endforeach;?>
-        </ul>
-    </nav>
+    <div class="collapse navbar-collapse" id="menuPrincipal">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <?php foreach($opcoes_menu as $categoria => $arquivos): ?>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+              <?= $categoria ?>
+            </a>
+            <ul class="dropdown-menu">
+              <?php foreach($arquivos as $arquivo): ?>
+                <li><a class="dropdown-item" href="<?= $arquivo ?>"><?= ucfirst(str_replace("_"," ",basename($arquivo,".php"))) ?></a></li>
+              <?php endforeach; ?>
+            </ul>
+          </li>
+        <?php endforeach; ?>
+      </ul>
+
+      <span class="navbar-text me-3 text-light">
+        <?= $_SESSION["usuario"]; ?> (<?= $nome_perfil ?>)
+      </span>
+
+      <form action="logout.php" method="POST" class="d-flex">
+        <button type="submit" class="btn btn-outline-light">Logout</button>
+      </form>
+    </div>
+  </div>
+</nav>
+<!-- Bootstrap JS local -->
+<script src="bootstrap-5.3.7-dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
