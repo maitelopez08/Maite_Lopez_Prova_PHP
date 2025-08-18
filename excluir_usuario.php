@@ -40,9 +40,10 @@ if(isset($_GET['id']) && is_numeric($_GET['id'])){
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Excluir Usuário</title>
   <link rel="stylesheet" href="bootstrap-5.3.7-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body class="bg-light">
-
+<?php include 'menu.php'; ?>
   <div class="d-flex align-items-center justify-content-center vh-100">
     <div class="col-md-10">
 

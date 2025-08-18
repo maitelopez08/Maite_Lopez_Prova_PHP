@@ -38,8 +38,10 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Buscar Usuário</title>
 <link rel="stylesheet" href="bootstrap-5.3.7-dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body class="bg-light">
+<?php include 'menu.php'; ?>
 <div class="container mt-5">
     <div class="card shadow p-4">
         <h2 class="text-center mb-4">Lista de Usuários</h2>    

@@ -44,9 +44,10 @@ if($_SERVER["REQUEST_METHOD"]== "POST"){
   <link rel="stylesheet" href="bootstrap-5.3.7-dist/css/bootstrap.min.css">
   <!--CERTIFIQUE-SE DE QUE O SCRIPT ESTÁ SENDO CARREGADO CORRETAMENTE -->
   <script src="scripts.js"></script>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body class="bg-light">
-
+<?php include 'menu.php'; ?>
   <div class="d-flex align-items-center justify-content-center vh-100">
     <div class="col-md-8">
 
