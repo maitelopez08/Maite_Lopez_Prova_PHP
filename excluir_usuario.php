@@ -24,7 +24,7 @@ if(isset($_GET['id']) && is_numeric($_GET['id'])){
     //EXCLUI O USUARIO DO BANCO DE DADOS 
     $sql = "DELETE FROM usuario WHERE id_usuario = :id";
     $stmt = $pdo->prepare($sql);
-    $stmt->bindParam('id',$id_usuario,PDO::PARAM_INT);
+    $stmt->bindParam(':id',$id_usuario,PDO::PARAM_INT);
 
     if($stmt->execute()){
         echo "<script>alert('Usuario excluido com Succeso!');window.location.href='excluir_usuario.php';</script>";
@@ -44,9 +44,8 @@ if(isset($_GET['id']) && is_numeric($_GET['id'])){
 </head>
 <body class="bg-light">
 <?php include 'menu.php'; ?>
-  <div class="d-flex align-items-center justify-content-center vh-100">
-    <div class="col-md-10">
-
+  <div class="d-flex align-items-center justify-content-center vh-10">
+    <div class="col-md-8">
       <div class="card shadow-sm rounded-3">
         <div class="card-header bg-danger text-white text-center">
           <h2 class="mb-0">Excluir Usuário</h2>
@@ -107,8 +106,5 @@ if(isset($_GET['id']) && is_numeric($_GET['id'])){
 
     </div>
   </div>
-
-  <!-- Bootstrap JS -->
-  <script src="bootstrap-5.3.7-dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
