@@ -51,7 +51,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
         </div>
         <div class="card-body">
 
-          <form action="cadastro_usuario.php" method="POST">
+          <form action="cadastro_usuario.php" method="POST" onsubmit="returnvalidarUsuario()">
 
             <div class="form-floating mb-3">
               <input type="text" id="nome" name="nome" class="form-control" placeholder="Nome" required>
