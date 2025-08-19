@@ -55,17 +55,17 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
           <form action="cadastro_usuario.php" method="POST" onsubmit="return validarUsuario()">
 
             <div class="form-floating mb-3">
-              <input type="text" id="nome" name="nome" class="form-control" placeholder="Nome" required>
+              <input type="text" id="nome" name="nome" class="form-control" placeholder="Nome">
               <label for="nome">Nome</label>
             </div>
 
             <div class="form-floating mb-3">
-              <input type="email" id="email" name="email" class="form-control" placeholder="Email" required>
+              <input type="email" id="email" name="email" class="form-control" placeholder="Email">
               <label for="email">Email</label>
             </div>
 
             <div class="form-floating mb-3">
-              <input type="password" id="senha" name="senha" class="form-control" placeholder="Senha" required>
+              <input type="password" id="senha" name="senha" class="form-control" placeholder="Senha">
               <label for="senha">Senha</label>
             </div>
 

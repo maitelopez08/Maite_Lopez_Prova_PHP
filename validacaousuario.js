@@ -3,6 +3,21 @@ function validarUsuario() {
     let email = document.getElementById("email").value.trim();
     let senha = document.getElementById("senha").value;
 
+    if (nome.length === 0) {
+        alert("O campo Nome é obrigatório.");
+        return false;
+    }
+
+    if (email.length === 0) {
+        alert("O campo Email é obrigatório.");
+        return false;
+    }
+
+    if (senha.length === 0) {
+        alert("O campo Senha é obrigatório.");
+        return false;
+    }
+
     if (nome.length < 3) {
         alert("O nome do funcionário deve ter pelo menos 3 caracteres.");
         return false;
