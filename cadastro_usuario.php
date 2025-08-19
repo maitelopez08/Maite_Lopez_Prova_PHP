@@ -38,7 +38,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
   <title>Cadastrar Usuário</title>
   <link rel="stylesheet" href="bootstrap-5.3.7-dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="styles.css">
-  <script src="validacaousuario.js"></script>
+  <script src="validacao_usuario.js"></script>
 </head>
 <body class="bg-light">
 <?php include 'menu.php'; ?>

@@ -45,13 +45,14 @@ if($_SERVER["REQUEST_METHOD"]== "POST"){
   <!--CERTIFIQUE-SE DE QUE O SCRIPT ESTÁ SENDO CARREGADO CORRETAMENTE -->
   <script src="scripts.js"></script>
   <link rel="stylesheet" href="styles.css">
+  <script src="validacao_cadastrar.js"></script>
 </head>
 <body class="bg-light">
 <?php include 'menu.php'; ?>
-  <div class="d-flex align-items-center justify-content-center vh-100">
-    <div class="col-md-8">
+  <div class="d-flex align-items-center justify-content-center vh-70">
+    <div class="col-md-6">
 
-      <div class="card shadow-sm rounded-3">
+      <div class="card shadow-sm rounded-2">
         <div class="card-header bg-primary text-white text-center">
           <h2 class="mb-0">Alterar Usuário</h2>
         </div>
