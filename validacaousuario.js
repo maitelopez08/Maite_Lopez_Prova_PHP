@@ -8,15 +8,21 @@ function validarUsuario() {
         return false;
     }
 
+    let regexNumero = /\d/;
+    if (regexNumero.test(nome)) {
+        alert("O nome não pode conter números.");
+        return false;
+    }
+
     let regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!regexEmail.test(email)) {
         alert("Digite um e-mail válido.");
         return false;
     }
 
-    let regexSenha = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!regexsenha.test(senha)) {
-        alert("Senha Inválida.");
+    let regexSenha = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+    if (!regexSenha.test(senha)) {
+        alert("A senha deve ter pelo menos 8 caracteres, incluindo letras e números.");
         return false;
     }
 
