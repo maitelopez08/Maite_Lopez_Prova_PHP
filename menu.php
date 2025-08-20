@@ -1,4 +1,5 @@
 <?php
+
 //OBTENDO O NOME DO PERFIL DO USUARIO LOGADO
 $id_perfil = $_SESSION['perfil'];
 $sqlPerfil = "SELECT nome_perfil FROM perfil WHERE id_perfil = :id_perfil";

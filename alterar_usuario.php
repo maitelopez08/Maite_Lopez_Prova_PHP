@@ -4,14 +4,14 @@ require_once 'conexao.php';
 
 //VERIFICA SE O USUARIO TEM PRMISSAO DE ADM
 if($_SESSION['perfil'] !=1){
-    echo "<script>alert('Ácesso negado!');window.location.href='principal.php';</script>";
+    echo "<script>alert('Ácesso negado!'); window.location.href='principal.php';</script>";
     exit();
 }
 
 //INICIALIZA VARIAVEIS
 $usuario = null;
 
-if($_SERVER["REQUEST_METHOD"]== "POST"){
+if($_SERVER["REQUEST_METHOD"]=="POST"){
     if(!empty($_POST['busca_usuario'])){
         $busca = trim($_POST['busca_usuario']);
 
@@ -58,19 +58,11 @@ if($_SERVER["REQUEST_METHOD"]== "POST"){
         </div>
         <div class="card-body">
 
-
           <form action="alterar_usuario.php" method="POST" class="mb-4">
             <div class="form-floating mb-3">
-              <input type="text" id="busca_usuario" name="busca_usuario" class="form-control" placeholder="Digite o id ou nome" required onkeyup="buscarSugestoes()">
               <label for="busca_usuario">Digite o ID ou nome do usuário</label>
-            </div>
-
-        <!-- DIV PARA EXIBIR SUGESTOES DE USUARIOS -->
-            <div id="sugestoes" class="mb-3"></div>
-
-            <div class="d-grid gap-2">
+              <input type="text" id="busca_usuario" name="busca_usuario" class="form-control" placeholder="Digite o id ou nome" required onkeyup="buscarSugestoes()">
               <button type="submit" class="btn btn-primary">Buscar</button>
-              <a href="principal.php" class="btn btn-dark">Voltar</a>
             </div>
           </form>
 
