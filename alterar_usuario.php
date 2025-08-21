@@ -43,8 +43,9 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alterar Usuario</title>
     <link rel="stylesheet" href="styles.css">
-<!--CERTIFIQUE-SE DE QUE O SCRIPT ESTÁ SENDO CARREGADO CORRETAMENTE -->
     <script src="scripts.js"></script>
+<!--CERTIFIQUE-SE DE QUE O SCRIPT ESTÁ SENDO CARREGADO CORRETAMENTE -->
+
 </head>
 <body>
     <h2>Alterar Usuário</h2>
@@ -52,8 +53,6 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     <form action="alterar_usuario.php" method="POST">
         <label for="busca_usuario">Digite o id ou nome do usuario</label>
         <input type="text" id="busca_usuario" name="busca_usuario" required onkeyup="buscarSugestoes()">
-       
-<!-- DIV PARA EXIBIR SUGESTOES DE USUARIOS -->
         <button type="submit">Buscar</button>
     </form>
 <?php if($usuario):?>
@@ -87,5 +86,6 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     <div  class="voltar">
         <a class="link" href="principal.php">Voltar</a>
     </div>
+    <script src="validacao_alterar.js"></script>
 </body>
 </html>
