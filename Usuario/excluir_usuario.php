@@ -45,7 +45,7 @@ if(isset($_GET['id']) && is_numeric($_GET['id'])){
 <body>
     <h2>Excluir Usuario</h2>
     <?php if(!empty($usuarios)): ?>
-        <table border="1">
+        <table class="tabela-usuarios">
             <tr>
                 <th>ID</th>
                 <th>Nome</th>
@@ -69,6 +69,8 @@ if(isset($_GET['id']) && is_numeric($_GET['id'])){
         <?php else: ?>
             <p>Nenhum usuario encontrado</p>
         <?php endif; ?>
-        <a href="principal.php">Voltar</a>
+        <div  class="voltar">
+        <a class="link" href="principal.php">Voltar</a>
+        </div>
 </body>
 </html>

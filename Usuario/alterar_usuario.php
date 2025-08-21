@@ -54,18 +54,17 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
         <input type="text" id="busca_usuario" name="busca_usuario" required onkeyup="buscarSugestoes()">
        
 <!-- DIV PARA EXIBIR SUGESTOES DE USUARIOS -->
-        <div id="sugestoes"></div>
         <button type="submit">Buscar</button>
     </form>
 <?php if($usuario):?>
-    <form action="processa_alteracao_usuario.php" method="POST">
+    <form action="processa_alteracao_usuario.php" method="POST" onsubmit="return validarAlteracao()">
         <input type="hidden" name="id_usuario" value="<?=htmlspecialchars($usuario['id_usuario']);?>">
 
         <label for="nome">Nome:</label>
-        <input type="text" id="nome" name="nome" value="<?=htmlspecialchars($usuario['nome']);?>"required>
+        <input type="text" id="nome" name="nome" value="<?=htmlspecialchars($usuario['nome']);?>">
 
         <label for="email">Email:</label>
-        <input type="email" id="email" name="email" value="<?=htmlspecialchars($usuario['email']);?>"required>
+        <input type="email" id="email" name="email" value="<?=htmlspecialchars($usuario['email']);?>">
 
         <label for="id_perfil">Perfil:</label>
         <select id="id_perfil" name="id_perfil">
@@ -85,6 +84,8 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
         <button type="reset">Cancelar</button>
         </form>
     <?php endif; ?>
-    <a href="principal.php">Voltar</a>
+    <div  class="voltar">
+        <a class="link" href="principal.php">Voltar</a>
+    </div>
 </body>
 </html>

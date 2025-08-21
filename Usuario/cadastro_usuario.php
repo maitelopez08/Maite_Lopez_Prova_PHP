@@ -41,16 +41,16 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 </head>
 <body>
     <h2>Cadastrar Usuário</h2>
-    <form action="cadastro_usuario.php" method="POST">
+    <form action="cadastro_usuario.php" method="POST" onsubmit="return validarUsuario()">
 
     <label for="nome">Nome:</label>
-    <input type="text" id="nome" name="nome" required>
+    <input type="text" id="nome" name="nome">
 
     <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required>
+    <input type="email" id="email" name="email">
 
     <label for="senha">Senha:</label>
-    <input type="password" id="senha" name="senha" required>
+    <input type="password" id="senha" name="senha">
 
     <label for="id_perfil">Perfil:</label>
     <select id="id_perfil" name="id_perfil">
@@ -63,6 +63,9 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
         <button type="reset">Cancelar</button>
     </form>
 
-        <a href="principal.php">Voltar</a>
+    <div  class="voltar">
+        <a class="link" href="principal.php">Voltar</a>
+    </div>
+    <script src="validacao_usuario.js"></script>
 </body>
 </html>

@@ -2,6 +2,8 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     text-align: center;
+    margin: 0;
+    padding: 0;
 }
 
 .login-container {
@@ -170,6 +172,128 @@ button:hover {
 }
 
 
+<<<<<<< HEAD
+/* Estilo da tabela buscar usuario */
+.table {
+    width: 80%;
+    margin: 20px auto; /* Centraliza a tabela */
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden; /* Para arredondar cantos */
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.table th {
+    background-color: #007bff; /* Azul compatível com botões */
+    color: white;
+    padding: 12px;
+    text-align: left;
+}
+
+/* Linhas da tabela */
+.table td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Alternância de cor nas linhas */
+.table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.table tr:hover {
+    background-color: #e6f0ff;
+}
+
+.table a {
+    text-decoration: none;
+    color: #007bff;
+    margin-right: 10px;
+    padding: 5px 8px;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.table a:hover {
+    background-color: #0056b3;
+    color: white;
+}
+
+p {
+    margin-top: 20px;
+    font-style: italic;
+    color: #555;
+}
+
+
+/* Estilo exclusivo para tabela de excluir usuario */
+.tabela-usuarios {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.tabela-usuarios th {
+    background-color: #007bff;
+    color: white;
+    padding: 12px;
+    text-align: left;
+}
+
+.tabela-usuarios td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.tabela-usuarios tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.tabela-usuarios tr:hover {
+    background-color: #e6f0ff;
+}
+
+.tabela-usuarios a {
+    text-decoration: none;
+    color: #fff;
+    background-color: #d9534f;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.tabela-usuarios a:hover {
+    background-color: #28275e;
+}
+
+
+
+.voltar {
+    display: flex;           
+    justify-content: center; 
+    margin-top: 20px;        
+}
+
+.voltar .link {
+    padding: 4px 10px;
+    background-color: #141414;  
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    
+}
+
+.voltar .link:hover {
+    background-color: #a7a5a5; 
+}
+=======
 
 
 
@@ -182,3 +306,4 @@ button:hover {
 
 
 
+>>>>>>> 44beb0c87c6e0dd5f5e73efaa16f74297e34a2d1
