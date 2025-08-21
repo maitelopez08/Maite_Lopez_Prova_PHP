@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once 'conexao.php';
+require_once 'menu.php';
 
 //VERIFICA SE O USUARIO TEM PRMISSAO DE ADM
 if($_SESSION['perfil'] !=1){
@@ -38,78 +39,52 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Alterar Usuário</title>
-  <link rel="stylesheet" href="bootstrap-5.3.7-dist/css/bootstrap.min.css">
-  <!--CERTIFIQUE-SE DE QUE O SCRIPT ESTÁ SENDO CARREGADO CORRETAMENTE -->
-  <script src="scripts.js"></script>
-  <link rel="stylesheet" href="styles.css">
-  <script src="validacao_cadastrar.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alterar Usuario</title>
+    <link rel="stylesheet" href="styles.css">
+<!--CERTIFIQUE-SE DE QUE O SCRIPT ESTÁ SENDO CARREGADO CORRETAMENTE -->
+    <script src="scripts.js"></script>
 </head>
-<body class="bg-light">
-<?php include 'menu.php'; ?>
-  <div class="d-flex align-items-center justify-content-center vh-70">
-    <div class="col-md-6">
+<body>
+    <h2>Alterar Usuário</h2>
 
-      <div class="card shadow-sm rounded-2">
-        <div class="card-header bg-primary text-white text-center">
-          <h2 class="mb-0">Alterar Usuário</h2>
-        </div>
-        <div class="card-body">
+    <form action="alterar_usuario.php" method="POST">
+        <label for="busca_usuario">Digite o id ou nome do usuario</label>
+        <input type="text" id="busca_usuario" name="busca_usuario" required onkeyup="buscarSugestoes()">
+       
+<!-- DIV PARA EXIBIR SUGESTOES DE USUARIOS -->
+        <div id="sugestoes"></div>
+        <button type="submit">Buscar</button>
+    </form>
+<?php if($usuario):?>
+    <form action="processa_alteracao_usuario.php" method="POST">
+        <input type="hidden" name="id_usuario" value="<?=htmlspecialchars($usuario['id_usuario']);?>">
 
-          <form action="alterar_usuario.php" method="POST" class="mb-4">
-            <div class="form-floating mb-3">
-              <label for="busca_usuario">Digite o ID ou nome do usuário</label>
-              <input type="text" id="busca_usuario" name="busca_usuario" class="form-control" placeholder="Digite o id ou nome" required onkeyup="buscarSugestoes()">
-              <button type="submit" class="btn btn-primary">Buscar</button>
-            </div>
-          </form>
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" value="<?=htmlspecialchars($usuario['nome']);?>"required>
 
-          <?php if($usuario): ?>
-          <form action="processa_alteracao_usuario.php" method="POST">
-            <input type="hidden" name="id_usuario" value="<?=htmlspecialchars($usuario['id_usuario']);?>">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" value="<?=htmlspecialchars($usuario['email']);?>"required>
 
-            <div class="form-floating mb-3">
-              <input type="text" id="nome" name="nome" class="form-control" value="<?=htmlspecialchars($usuario['nome']);?>" placeholder="Nome" required>
-              <label for="nome">Nome</label>
-            </div>
+        <label for="id_perfil">Perfil:</label>
+        <select id="id_perfil" name="id_perfil">
+            <option value="1" <?=$usuario['id_perfil'] == 1 ?'select':''?>>Administrador</option>
+            <option value="2" <?=$usuario['id_perfil'] == 2 ?'select':''?>>Secretária</option>
+            <option value="3" <?=$usuario['id_perfil'] == 3 ?'select':''?>>Almoxarife</option>
+            <option value="4" <?=$usuario['id_perfil'] == 4 ?'select':''?>>Cliente</option>
+        </select>
+    
+    <!-- SE O USUARIO LOGADO FOR ADM, EXIBIR OPÇAO DE ALTERAR SENHA -->
+        <?php if($_SESSION['perfil'] == 1): ?>
+            <label for="nova_senha">Nova Senha</label>
+            <input type="password" id="nova_senha" name="nova_senha">
+        <?php endif; ?>
 
-            <div class="form-floating mb-3">
-              <input type="email" id="email" name="email" class="form-control" value="<?=htmlspecialchars($usuario['email']);?>" placeholder="Email" required>
-              <label for="email">Email</label>
-            </div>
-
-            <div class="mb-3">
-              <label for="id_perfil" class="form-label">Perfil</label>
-              <select id="id_perfil" name="id_perfil" class="form-select">
-                <option value="1" <?=$usuario['id_perfil'] == 1 ? 'selected':''?>>Administrador</option>
-                <option value="2" <?=$usuario['id_perfil'] == 2 ? 'selected':''?>>Secretária</option>
-                <option value="3" <?=$usuario['id_perfil'] == 3 ? 'selected':''?>>Almoxarife</option>
-                <option value="4" <?=$usuario['id_perfil'] == 4 ? 'selected':''?>>Cliente</option>
-              </select>
-            </div>
-        
-            <!-- SE O USUARIO LOGADO FOR ADM, EXIBIR OPÇAO DE ALTERAR SENHA -->
-
-            <?php if($_SESSION['perfil'] == 1): ?>
-            <div class="form-floating mb-3">
-              <input type="password" id="nova_senha" name="nova_senha" class="form-control" placeholder="Nova senha">
-              <label for="nova_senha">Nova Senha</label>
-            </div>
-            <?php endif; ?>
-
-            <div class="d-grid gap-2">
-              <button type="submit" class="btn btn-primary">Alterar</button>
-              <button type="reset" class="btn btn-secondary">Cancelar</button>
-            </div>
-          </form>
-          <?php endif; ?>
-
-        </div>
-      </div>
-
-    </div>
-  </div>
+        <button type="submit">Alterar</button>
+        <button type="reset">Cancelar</button>
+        </form>
+    <?php endif; ?>
+    <a href="principal.php">Voltar</a>
 </body>
 </html>

@@ -39,29 +39,19 @@ if($_SERVER["REQUEST_METHOD"]== "POST"){
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Recuperar Senha</title>
-<link rel="stylesheet" href="bootstrap-5.3.7-dist/css/bootstrap.min.css">
-<link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperar Senha</title>
+    <link rel="stylesheet" href="styles.css">
+
 </head>
-<body class="bg-light d-flex justify-content-center align-items-center vh-100">
-
-<div class="card shadow-lg p-4 rounded-4" style="max-width: 400px; width: 100%;">
-    <h3 class="text-center mb-4 text-primary">Recuperar Senha</h3>
-
+<body>
+    <h2>Recuperar Senha</h2>
     <form action="recuperar_senha.php" method="POST">
-        <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="email" name="email" placeholder="Digite seu e-mail" required>
-            <label for="email">E-mail cadastrado</label>
-        </div>
+        <label for="email">Digite o seu email cadastrado</label>
+        <input type="email" id="email" name="email" required>
 
-        <button type="submit" class="btn btn-primary w-100 py-2">Enviar Senha Temporária</button>
+        <button type="submit">Enviar a Senha Temporaria</button>
     </form>
-
-    <div class="text-center mt-3">
-        <a href="index.php" class="text-decoration-none">Voltar ao Login</a>
-    </div>
-</div>
 </body>
 </html>
