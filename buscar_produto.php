@@ -3,19 +3,12 @@ session_start();
 require_once 'conexao.php';
 require_once 'menu.php';
 
-//VERIFICA SE O PRODUTO TEM PRMISSAO DE adm OU Secretaria
-if($_SESSION['perfil'] !=1 && $_SESSION['perfil']!=2 && $_SESSION['perfil']!=3 && $_SESSION['perfil']!=4){
-    echo "<script>alert('Ácesso negado!');window.location.href='principal.php'</script>";
-    exit();
-}
+//TODOS OS USUARIOS TEM PERMISSÃO PARA BUSCAR PRODUTO
 
-$produto = []; //INICIALIZA A VARIAVEL PARA EVITAR ERROS
-
-//SE O FORMULARIO FOI ENVIADO, BUSCA O PRODUTO PELO ID OU nome_prod
 if($_SERVER["REQUEST_METHOD"]=="POST" && !empty($_POST['busca'])){
     $busca = trim($_POST['busca']);
 
-    //VERIFICA SE A BUSCA É UM numero OU UM nome_prod
+    //VERIFICA SE A BUSCA É UM numero OU UM nome
     if(is_numeric($busca)){
         $sql="SELECT * FROM produto WHERE id_produto = :busca ORDER BY nome_prod ASC";
         $stmt = $pdo->prepare($sql);
@@ -23,10 +16,11 @@ if($_SERVER["REQUEST_METHOD"]=="POST" && !empty($_POST['busca'])){
     }else{
         $sql="SELECT * FROM produto WHERE nome_prod LIKE :busca_nome_prod ORDER BY nome_prod ASC";
         $stmt = $pdo->prepare($sql);
-        $stmt->bindValue(':busca_nome_prod',"$busca%", PDO::PARAM_STR); //$busca%
+        $stmt->bindValue(':busca_nome_prod',"%$busca%", PDO::PARAM_STR);
     }
 }else{
-        $sql="SELECT * FROM produto ORDER BY nome_prod ASC";
+    //BUSCA TODOS OS PRODUTOS CADASTRADOS ORDENADOS POR ID DE PRODUTO
+        $sql="SELECT * FROM produto ORDER BY id_produto ASC";
         $stmt = $pdo->prepare($sql);
 }
 $stmt->execute();
@@ -43,7 +37,7 @@ $produtos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <body>
     <h2>Lista de Produtos</h2>    
     <form action="buscar_produto.php" method="POST">
-        <label for="busca">Digite o ID ou nome_prod(opcional):</label>
+        <label for="busca">Digite o ID ou Nome(opcional):</label>
         <input type="text" id="busca" name="busca">
         <button type="submit">Pesquisar</button>
     </form>
@@ -80,5 +74,9 @@ $produtos = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div  class="voltar">
         <a class="link" href="principal.php">Voltar</a>
     </div>
+    <br><br><br>
+    <footer>
+        <center> Maite López / Estudante / Tecnico em Desenvolvimento de Sistemas</center>
+</footer>    
 </body>
 </html>
