@@ -41,6 +41,8 @@ $permissoes = [
 //OBTENDO AS OPÇOES DISPONIVEIS PARA O PERFIL LOGADO
 $opcoes_menu = $permissoes["$id_perfil"];
 ?>
+
+<link rel="stylesheet" href="styles.css">
     <nav>
         <ul class="menu">
             <?php foreach($opcoes_menu as $categoria =>$arquivos):?>
