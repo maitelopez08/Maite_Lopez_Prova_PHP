@@ -53,5 +53,9 @@ if($_SERVER["REQUEST_METHOD"]== "POST"){
 
         <button type="submit">Enviar a Senha Temporaria</button>
     </form>
+    <br><br>
+    <footer>
+        <center> Maite López / Estudante / Tecnico em Desenvolvimento de Sistemas</center>
+</footer>
 </body>
 </html>
