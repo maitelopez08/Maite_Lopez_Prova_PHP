@@ -33,7 +33,7 @@ $permissoes = [
     "Alterar"=>["alterar_fornecedor.php","alterar_produto.php"],
     "Excluir"=>["excluir_produto.php"]],
     
-    //Funcionario
+    //Almoxarife
     3 =>["Cadastrar"=>["cadastro_fornecedor.php","cadastro_produto.php"],
     "Buscar"=>["buscar_cliente.php","buscar_fornecedor.php","buscar_produto.php"],
     "Alterar"=>["alterar_fornecedor.php","alterar_produto.php"],
@@ -88,5 +88,10 @@ $opcoes_menu = $permissoes["$id_perfil"];
             <?php endforeach;?>
         </ul>
     </nav>
+    <br><br><br>
+    <br><br>
+    <footer>
+        <center> Maite López / Estudante / Tecnico em Desenvolvimento de Sistemas</center>
+</footer>
 </body>
 </html>
