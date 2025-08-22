@@ -3,7 +3,7 @@ session_start();
 require_once 'conexao.php';
 require_once 'menu.php';
 
-//VERIFICA SE O USUARIO TEM PRMISSAO DE ADM
+//VERIFICA SE O USUARIO TEM PRMISSAO DE ADM, SECRETARIA OU ALMOXARIFE
 if($_SESSION['perfil'] !=1 && $_SESSION['perfil']!=2 && $_SESSION['perfil']!=3 ){
     echo "<script>alert('Ácesso negado!'); window.location.href='principal.php';</script>";
     exit();
@@ -31,7 +31,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
         
         //SE O PRODUTO NÃO FOR ENCONTRADO, EXIBE UM ALERTA
         if(!$produto){
-            echo "<script>alert('Produto não encontrado!');</script>";
+            echo "<script>alert('Produto não encontrado!');window.location.href='alterar_produto.php';</script>";
         }
     }
 }
@@ -43,40 +43,42 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alterar Produto</title>
     <link rel="stylesheet" href="styles.css">
-<!--CERTIFIQUE-SE DE QUE O SCRIPT ESTÁ SENDO CARREGADO CORRETAMENTE -->
     <script src="scripts.js"></script>
 </head>
 <body>
     <h2>Alterar Produto</h2>
-
     <form action="alterar_produto.php" method="POST">
         <label for="busca_produto">Digite o id ou nome do produto</label>
         <input type="text" id="busca_produto" name="busca_produto" required onkeyup="buscarSugestoes()">
         <button type="submit">Buscar</button>
     </form>
 <?php if($produto):?>
-    <form action="processa_alteracao_produto.php" method="POST" onsubmit="return validarAlteracao()">
+    <form action="processa_alteracao_produto.php" method="POST" onsubmit="return validarAlteracaoProduto()">
         <input type="hidden" name="id_produto" value="<?=htmlspecialchars($produto['id_produto']);?>">
 
         <label for="nome_prod">Nome:</label>
         <input type="text" id="nome_prod" name="nome_prod" value="<?=htmlspecialchars($produto['nome_prod']);?>">
 
         <label for="descricao">Descrição:</label>
-        <textarea id="descricao" name="descricao" value="<?=htmlspecialchars($produto['descricao']);?>"></textarea>
+        <textarea id="descricao" name="descricao" <?=htmlspecialchars($produto['descricao']);?>></textarea>
 
         <label for="qtde">Quantidade:</label>
         <input type="number" id="qtde" name="qtde" value="<?=htmlspecialchars($produto['qtde']);?>">
 
         <label for="valor_unit">Valor:</label>
-        <input type="number" id="valor_unit" name="valor_unit" value="<?=htmlspecialchars($produto['valor_unit']);?>">
-
+        <input type="number" id="valor_unit" name="valor_unit" step="0.01" value="<?=htmlspecialchars($produto['valor_unit']);?>">
+        
         <button type="submit">Alterar</button>
         <button type="reset">Cancelar</button>
         <div  class="voltar">
-        <a class="link" href="principal.php">Voltar</a>
-    </div>
+            <a class="link" href="principal.php">Voltar</a>
+        </div>
         </form>
     <?php endif; ?>
-
+<script src="validacao_alterar_produto.js"></script>
+<br><br><br>
+    <footer>
+        <center> Maite López / Estudante / Tecnico em Desenvolvimento de Sistemas</center>
+</footer>    
 </body>
 </html>
