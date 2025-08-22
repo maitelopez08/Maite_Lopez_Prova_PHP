@@ -38,7 +38,7 @@ header {
 }
 
 .logout button {
-    background-color: #d9534f;
+    background-color: #755aa7;
     color: white;
     border: none;
     padding: 10px 15px;
@@ -48,7 +48,7 @@ header {
 }
 
 .logout button:hover {
-    background-color: #c9302c;
+    background-color: #63449c;
 }
 
 .menu {
@@ -56,7 +56,7 @@ header {
     padding: 0;
     margin: 0;
     display: flex;
-    background-color: #333;
+    background-color: #463535;
 }
 
 .menu li {
@@ -68,7 +68,7 @@ header {
     padding: 15px;
     color: rgb(255, 255, 255);
     text-decoration: none;
-    background-color: #333;
+    background-color: #463535;
 }
 
 .menu li:hover > a {
@@ -172,7 +172,7 @@ button:hover {
 }
 
 
-/* Estilo da tabela buscar usuario */
+/* Estilo das tabelas buscar*/
 .table {
     width: 80%;
     margin: 20px auto; /* Centraliza a tabela */
@@ -228,8 +228,8 @@ p {
 }
 
 
-/* Estilo exclusivo para tabela de excluir usuario */
-.tabela-usuarios {
+/* Estilo exclusivo para tabelas de excluir*/
+.tabela-excluir {
     width: 80%;
     margin: 20px auto;
     border-collapse: collapse;
@@ -239,27 +239,27 @@ p {
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.tabela-usuarios th {
+.tabela-excluir th {
     background-color: #007bff;
     color: white;
     padding: 12px;
     text-align: left;
 }
 
-.tabela-usuarios td {
+.tabela-excluir td {
     padding: 10px;
     border-bottom: 1px solid #ddd;
 }
 
-.tabela-usuarios tr:nth-child(even) {
+.tabela-excluir tr:nth-child(even) {
     background-color: #f9f9f9;
 }
 
-.tabela-usuarios tr:hover {
+.tabela-excluir tr:hover {
     background-color: #e6f0ff;
 }
 
-.tabela-usuarios a {
+.tabela-excluir a {
     text-decoration: none;
     color: #fff;
     background-color: #d9534f;
@@ -268,7 +268,7 @@ p {
     transition: 0.3s;
 }
 
-.tabela-usuarios a:hover {
+.tabela-excluir a:hover {
     background-color: #28275e;
 }
 
@@ -291,4 +291,28 @@ p {
 
 .voltar .link:hover {
     background-color: #a7a5a5; 
+}
+
+/* Ajusta os campos de entrada */
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="password"],
+textarea{
+    width: 80%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+textarea{
+    min-height: 60px;
+}
+
+
+footer{
+    font-size: 10px;
 }
