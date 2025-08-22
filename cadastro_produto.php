@@ -3,11 +3,10 @@ session_start();
 require_once 'conexao.php';
 require_once 'menu.php';
 
-//VERIFICA SE O USUARIO TEM PERMISSAO 
-//SUPONDO QUE O PERFIL 1 SEJA O ADMINISTRADOR
+//VERIFICA SE O USUARIO TEM PRMISSAO DE ADM OU ALMOXARIFE
 
 if($_SESSION['perfil']!=1 && $_SESSION['perfil']!=3){
-    echo "Acesso Negado!";
+    echo "<script>alert('Ácesso negado!'); window.location.href='principal.php';</script>";
 }
 
 if($_SERVER["REQUEST_METHOD"]=="POST"){
@@ -16,7 +15,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     $qtde = $_POST['qtde'];
     $valor_unit = $_POST['valor_unit'];
 
-    $sql = "INSERT INTO produto (nome_prod,descricao,qtde,valor_unit) VALUES (:nome_prod,:descricao,:qtde,valor_unit)";
+    $sql = "INSERT INTO produto (nome_prod,descricao,qtde,valor_unit) VALUES (:nome_prod,:descricao,:qtde,:valor_unit)";
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':nome_prod', $nome_prod);
     $stmt->bindParam(':descricao', $descricao);
@@ -24,9 +23,9 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     $stmt->bindParam(':valor_unit', $valor_unit);
 
     if($stmt->execute()){
-        echo "<script>alert('Produto cadastrado com sucesso!');</script>";
+        echo "<script>alert('Produto cadastrado com sucesso!'); window.location.href='cadastro_produto.php';</script>";
     } else{
-        echo "<script>alert('Erro ao cadastrar Produto!');</script>";    
+        echo "<script>alert('Erro ao cadastrar Produto!'); window.location.href='cadastro_produto.php';</script>";  
     }
 }
 ?>
@@ -41,9 +40,9 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 </head>
 <body>
     <h2>Cadastrar Produto</h2>
-    <form action="cadastro_produto.php" method="POST" onsubmit="return validarUsuario()">
+    <form action="cadastro_produto.php" method="POST" onsubmit="return validarProduto()">
 
-    <label for="nome_prod">nome_prod:</label>
+    <label for="nome_prod">Nome:</label>
     <input type="text" id="nome_prod" name="nome_prod">
 
     <label for="descricao">Descrição:</label>
@@ -53,14 +52,19 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     <input type="text" id="qtde" name="qtde">
 
     <label for="valor_unit">Valor:</label>
-    <input type="text" id="valor_unit" name="valor_unit">
+    <input type="number" id="valor_unit" name="valor_unit" step="0.01">
 
         <button type="submit">Salvar</button>
         <button type="reset">Cancelar</button>
-        <div  class="voltar">
+    <div  class="voltar">
         <a class="link" href="principal.php">Voltar</a>
     </div>
     </form>
-    <!-- <script src="validacao_usuario.js"></script> -->
+<script src="validacao_produto.js"></script>
+<br><br><br>
+<br><br><br>
+    <footer>
+        <center> Maite López / Estudante / Tecnico em Desenvolvimento de Sistemas</center>
+</footer>    
 </body>
 </html>
