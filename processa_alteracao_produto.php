@@ -14,20 +14,15 @@ if($_SERVER["REQUEST_METHOD"] =="POST"){
     $qtde = $_POST['qtde'];
     $valor_unit = $_POST['valor_unit'];
 
-
-    if($valor_unit){
-        $sql="UPDATE produto SET nome_prod=:nome_prod,descricao=:descricao,qtde=:qtde,valor_unit=:valor_unit WHERE id_produto=:id";
+        $sql="UPDATE produto SET nome_prod=:nome_prod,descricao=:descricao,qtde=:qtde,valor_unit=:valor_unit WHERE id_produto=:id_produto";
         $stmt=$pdo->prepare($sql);
-        $stmt->bindParam(':valor_unit',$valor_unit);
-
-    }else{
-        $sql="UPDATE produto SET nome_prod=:nome_prod,descricao=:descricao,qtde=:qtde,valor_unit=:valor_unit WHERE id_produto=:id";
-        $stmt=$pdo->prepare($sql);
-    }
+  
         $stmt->bindParam(':nome_prod',$nome_prod);
         $stmt->bindParam(':descricao',$descricao);
         $stmt->bindParam(':qtde',$qtde);
         $stmt->bindParam(':valor_unit',$valor_unit);
+        $stmt->bindParam(':id_produto',$id_produto);
+
 
         if($stmt->execute()){
             echo "<script>alert('Produto atualizado com sucesso!');window.location.href='buscar_produto.php';</script>";
