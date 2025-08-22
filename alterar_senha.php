@@ -72,5 +72,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         senha2.type=tipo;
     }
 </script>
+<br><br><br>
+    <footer>
+        <center> Maite López / Estudante / Tecnico em Desenvolvimento de Sistemas</center>
+</footer>    
 </body>
 </html>
