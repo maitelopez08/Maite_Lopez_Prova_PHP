@@ -45,7 +45,7 @@ if(isset($_GET['id']) && is_numeric($_GET['id'])){
 <body>
     <h2>Excluir Usuario</h2>
     <?php if(!empty($usuarios)): ?>
-        <table class="tabela-usuarios">
+        <table class="tabela-excluir">
             <tr>
                 <th>ID</th>
                 <th>Nome</th>
@@ -72,5 +72,9 @@ if(isset($_GET['id']) && is_numeric($_GET['id'])){
         <div  class="voltar">
         <a class="link" href="principal.php">Voltar</a>
         </div>
+        <br><br><br>
+    <footer>
+        <center> Maite López / Estudante / Tecnico em Desenvolvimento de Sistemas</center>
+</footer>     
 </body>
 </html>
